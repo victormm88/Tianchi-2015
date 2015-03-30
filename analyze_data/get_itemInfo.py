@@ -27,13 +27,23 @@ for num,row in enumerate(csv_op):
     
 f_user.close();
 
-f_record=open('Item_Info.csv','wb');
+f_record=open('Item_Info_No.csv','wb');
 csv_writer=csv.writer(f_record);
 csv_writer.writerow(['item_id','polularity','look_through','collection','add_car','buy']);
+
+my_list=[];
 
 for key in my_dir.keys():
     temp_list=my_dir[key];
     temp_list[0]=len(temp_list[0]);
-    csv_writer.writerow([key]+temp_list);
+    my_list.append([key]+temp_list);
+    del(my_dir[key]);
+    #csv_writer.writerow([key]+temp_list);
+
+my_list.sort(key=lambda x : x[1],reverse=True);
+
+for num,row in enumerate(my_list):
+    csv_writer.writerow([num+1]+row);
+
 
 f_record.close();
