@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Gaussian	nonpos_sampling.py	/^def Gaussian(u,sigma):$/;"	f	access:public
+__author__	nonpos_sampling.py	/^__author__ = 'Wang Junqi'$/;"	v
+__author__	pos_sampling.py	/^__author__ = 'Wang Junqi'$/;"	v
+csv_reader	nonpos_sampling.py	/^csv_reader=csv.reader(open('positive.csv','rb'));$/;"	v
+csv_reader	pos_sampling.py	/^csv_reader=csv.reader(open('..\/test_data\/whole_test.csv','rb'));$/;"	v
+csv_writer	pos_sampling.py	/^csv_writer=csv.writer(open('positive_user.csv','wb'));$/;"	v
+get_nopos	nonpos_sampling.py	/^def get_nopos(pos_num,ratio,ui_set):$/;"	f	access:public
+pos_num	nonpos_sampling.py	/^pos_num=0;$/;"	v
+tittle	pos_sampling.py	/^tittle=csv_reader.next();$/;"	v
+ui_set	nonpos_sampling.py	/^ui_set=set();$/;"	v
+user_dir	pos_sampling.py	/^user_dir={};$/;"	v
