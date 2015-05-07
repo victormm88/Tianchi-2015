@@ -9,7 +9,7 @@ import csv;
 
 f_whole_test=open('whole_test.csv','wb');
 f_buy_test=open('buy_test.csv','wb');
-f_user=open('../train_data/user.csv','rb');
+f_user=open('../train_data/train_user_cleaned.csv','rb');
 f_trian=open('../train_data/cv_train.csv','wb');
 
 csv_writer=csv.writer(f_trian);
@@ -17,11 +17,6 @@ csv_reader=csv.reader(f_user);
 whole_writer=csv.writer(f_whole_test);
 buy_writer=csv.writer(f_buy_test);
 
-tittle=csv_reader.next();
-
-whole_writer.writerow(tittle);
-buy_writer.writerow(tittle);
-csv_writer.writerow(tittle);
 
 for num,row in enumerate(csv_reader):
     if row[5][:10]=='2014-12-17' or row[5][:10]=='2014-12-18':

@@ -21,7 +21,7 @@ def Gaussian(u,sigma):
     return abs(u+(result*sigma));
 
 
-def get_nopos(pos_num,ratio,ui_set,date,num):
+def get_nopos(pos_num,ratio,ui_set,date,num,people_num):
     csv_writer=csv.writer(open('non_positive_%s_%s.csv'%(num,date),'wb'));
 
     db=MySQLdb.connect("localhost",'root','','Recommender');
@@ -31,31 +31,10 @@ def get_nopos(pos_num,ratio,ui_set,date,num):
     csv_reader.next();
     sigma=pos_num*ratio/3;
     my_sum=0;
-    temp_ratio=0;
-    if ratio&1==0:
-        temp_ratio=ratio/2;
-    else:
-        temp_ratio=ratio/2+1;
-    for row in csv_reader:
-        my_sum+=int(row[1])*temp_ratio;
-        for x in xrange(int(row[1])*temp_ratio):
-            while True:
-                index_id=int(Gaussian(0,sigma))+1;
-                sql='''select * from Item_Info_No where index_id = '%d' ''' % (index_id);
-                cursor.execute(sql);
-                result=cursor.fetchone();
-                temp_item=str(result[1]);
-                temp_str=row[0]+','+temp_item;
-                if temp_str in ui_set:
-                    continue;
-                else:
-                    ui_set.add(temp_str);
-                    csv_writer.writerow([row[0],temp_item,'2014-12-%s'%date]);
-                    break;
-    left_num=pos_num*ratio-my_sum;
+    left_num=pos_num*ratio;
     for x in xrange(left_num):
         while True:
-            index_id=int(Gaussian(0,(left_num/3)))+1;
+            index_id=int(Gaussian(0,(people_num/2)))+1;
             sql='''select * from User_Info_No where index_id = '%d' ''' % (index_id);
             result_num=cursor.execute(sql);
             result=cursor.fetchone();
@@ -92,7 +71,7 @@ def main(num,d_day):
         ui_set.add(row[0]+','+row[1]);
         pos_num+=1;
     
-    get_nopos(pos_num,5,ui_set,d_day,num);
+    get_nopos(pos_num,5,ui_set,d_day,num,9950);
 
 
 if __name__ == '__main__':

@@ -29,7 +29,7 @@ f_user.close();
 
 f_record=open('Item_Info_No.csv','wb');
 csv_writer=csv.writer(f_record);
-csv_writer.writerow(['item_id','polularity','look_through','collection','add_car','buy']);
+#csv_writer.writerow(['item_id','polularity','look_through','collection','add_car','buy']);
 
 my_list=[];
 
